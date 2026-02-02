@@ -1,0 +1,132 @@
+# Example Geological Survey Configuration
+
+project_name: "Coastal Groundwater Geological Survey"
+input_file: "examples/geological_survey/sample_data.xlsx"
+output_dir: "examples/geological_survey/outputs/"
+
+# Extraction schema for geological core samples
+extraction_schema:
+  - field: "site_name"
+    type: "text"
+    description: "Site or core identifier (e.g., 'Site U1425', 'Lake Rinihue')"
+  
+  - field: "latitude"
+    type: "number"
+    description: "Latitude in decimal degrees (positive = North, negative = South)"
+  
+  - field: "longitude"
+    type: "number"
+    description: "Longitude in decimal degrees (positive = East, negative = West)"
+  
+  - field: "is_marine"
+    type: "boolean"
+    description: "Whether the core is from ocean/sea setting"
+  
+  - field: "is_terrestrial"
+    type: "boolean"
+    description: "Whether the core is from lake, bog, or land setting"
+  
+  - field: "sediment_type"
+    type: "text"
+    description: "Type of sediment (e.g., 'marine sediment', 'lake sediment')"
+  
+  - field: "core_depth_m"
+    type: "number"
+    description: "Total core recovery length in meters"
+  
+  - field: "analysis_methods"
+    type: "text"
+    description: "Analytical methods used (e.g., 'XRF, CaCO3, TOC, grain size')"
+  
+  - field: "xrf_machine"
+    type: "text"
+    description: "XRF instrument model if mentioned (e.g., 'Avaatech', 'ITRAX')"
+  
+  - field: "age_range"
+    type: "text"
+    description: "Age range covered by the core (e.g., 'Holocene', '0-15ka BP')"
+  
+  - field: "data_availability"
+    type: "text"
+    description: "Information about data availability or repositories"
+
+# Excel column mapping
+columns:
+  identifier: "Site"
+  paper_refs:
+    - "Reference"
+    - "Supporting_Paper_1"
+    - "Supporting_Paper_2"
+  preserve_columns:
+    - "Notes"
+    - "Project_Phase"
+
+# LLM settings
+llm:
+  provider: "gemini"
+  model: "gemini-2.0-flash-exp"
+  temperature: 0.1
+  max_tokens: 4000
+  max_retries: 3
+  retry_delay: 2
+
+# Citation resolution
+resolver:
+  enabled: true
+  cache_results: true
+  semantic_scholar:
+    enabled: true
+    timeout: 15
+    max_results: 10
+  rate_limit_delay: 1.0
+
+# PDF download
+downloader:
+  enabled: true
+  skip_existing: true
+  timeout: 60
+  max_retries: 3
+  pdf_dir: "examples/geological_survey/papers/"
+  respect_robots_txt: true
+  user_agent: "LitRover/1.0 (Research Tool)"
+
+# Extraction settings
+extraction:
+  batch_size: 10
+  cache_enabled: true
+  cache_dir: "examples/geological_survey/extracted/"
+  validate_output: true
+  confidence_threshold: 0.7
+  
+  # PDF Annotation - Highlight source text in PDFs!
+  annotate_pdfs: true
+  annotation_dir: "examples/geological_survey/annotated_papers/"
+  include_legend: true
+  request_source_refs: true
+
+# PDF Annotation - ENABLED for demonstration
+annotation:
+  enabled: true  # Creates color-coded annotated PDFs
+  output_dir: "examples/geological_survey/annotated_papers/"
+  add_legend: true
+
+# Output settings
+output:
+  format: "xlsx"
+  include_timestamps: true
+  include_sources: true
+  create_backup: true
+  backup_dir: "examples/geological_survey/backups/"
+
+# Logging
+logging:
+  level: "INFO"
+  file: "examples/geological_survey/litrover.log"
+  console: true
+
+# Advanced settings
+advanced:
+  max_workers: 4
+  clear_cache_on_complete: false
+  stop_on_error: false
+  save_partial_results: true

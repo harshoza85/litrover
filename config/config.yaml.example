@@ -1,0 +1,159 @@
+# LitRover Configuration Template
+# Copy this to your project-specific config file
+
+# === Project Settings ===
+project_name: "My Literature Survey"
+input_file: "data/papers.xlsx"
+output_dir: "outputs/"
+
+# === Extraction Settings ===
+# Define what fields you want to extract from papers
+extraction_schema:
+  - field: "author"
+    type: "text"
+    description: "First author of the paper"
+    
+  - field: "publication_year"
+    type: "number"
+    description: "Year of publication"
+    
+  - field: "sample_size"
+    type: "number"
+    description: "Number of samples, participants, or data points"
+    
+  - field: "methodology"
+    type: "text"
+    description: "Research methodology or approach used"
+    
+  - field: "key_findings"
+    type: "text"
+    description: "Main findings or conclusions"
+    
+  - field: "data_availability"
+    type: "boolean"
+    description: "Whether data is publicly available"
+
+# === PDF Annotation Settings ===
+# Highlight source text in PDFs with color coding
+annotation:
+  enabled: false  # Set to true to create annotated PDFs
+  output_dir: "annotated_papers/"
+  add_legend: true  # Add color-coded legend to first page
+  # Optional: Custom color scheme (RGB 0-1 range)
+  # custom_colors:
+  #   latitude: [0.0, 0.4, 1.0]  # Blue
+  #   sample_size: [1.0, 0.5, 0.0]  # Orange
+
+# === Excel Column Mapping ===
+# Map your Excel columns to LitRover's internal structure
+columns:
+  # Column containing unique identifier for each row
+  identifier: "Paper_ID"
+  
+  # Columns containing paper references/citations/URLs
+  # Can be DOIs, URLs, or text citations like "Smith et al., 2020"
+  paper_refs:
+    - "Primary_Reference"
+    - "Supporting_Ref_1"
+    - "Supporting_Ref_2"
+  
+  # Optional: Pre-existing data columns to preserve
+  preserve_columns:
+    - "Notes"
+    - "Review_Status"
+
+# === LLM Settings ===
+llm:
+  # Provider: "gemini", "claude", or "openai"
+  provider: "gemini"
+  
+  # Model selection
+  # Gemini: "gemini-2.0-flash-exp", "gemini-1.5-pro"
+  # Claude: "claude-sonnet-4-20250514", "claude-opus-4-20250514"
+  # OpenAI: "gpt-4o", "gpt-4-turbo"
+  model: "gemini-2.0-flash-exp"
+  
+  # Generation parameters
+  temperature: 0.1  # Lower = more deterministic
+  max_tokens: 4000
+  
+  # Retry settings
+  max_retries: 3
+  retry_delay: 2  # seconds
+
+# === Citation Resolution ===
+resolver:
+  enabled: true
+  cache_results: true
+  
+  # Semantic Scholar settings
+  semantic_scholar:
+    enabled: true
+    timeout: 15  # seconds
+    max_results: 10
+  
+  # Rate limiting (be nice to APIs)
+  rate_limit_delay: 1.0  # seconds between requests
+
+# === PDF Download ===
+downloader:
+  enabled: true
+  skip_existing: true
+  timeout: 60  # seconds
+  max_retries: 3
+  
+  # Output directory for PDFs
+  pdf_dir: "papers/"
+  
+  # Publisher-specific settings
+  respect_robots_txt: true
+  user_agent: "LitRover/1.0 (Research Tool)"
+
+# === Extraction Settings ===
+extraction:
+  batch_size: 10  # Papers processed in parallel
+  
+  # Cache extracted data
+  cache_enabled: true
+  cache_dir: "extracted/"
+  
+  # Validation
+  validate_output: true
+  confidence_threshold: 0.7  # Minimum confidence for extraction
+  
+  # PDF Annotation (NEW!)
+  annotate_pdfs: true  # Create annotated PDFs with highlighted sources
+  annotation_dir: "annotated_papers/"
+  include_legend: true  # Add color legend to first page
+  request_source_refs: true  # Ask LLM to provide source text and page numbers
+
+# === Output Settings ===
+output:
+  # Output file format
+  format: "xlsx"  # "xlsx" or "csv"
+  
+  # Include metadata in output
+  include_timestamps: true
+  include_sources: true
+  
+  # Backup settings
+  create_backup: true
+  backup_dir: "backups/"
+
+# === Logging ===
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "litrover.log"
+  console: true
+
+# === Advanced Settings ===
+advanced:
+  # Parallel processing
+  max_workers: 4
+  
+  # Memory management
+  clear_cache_on_complete: false
+  
+  # Error handling
+  stop_on_error: false
+  save_partial_results: true
