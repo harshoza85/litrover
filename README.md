@@ -1,6 +1,6 @@
 # 🔍 LitRover
 
-**Agentic AI System for Automated Literature Survey and Data Extraction**
+**Agentic AI System for Automated Literature Survey and Data Extraction with Advanced PDF Annotation**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -8,9 +8,18 @@
 
 **Author**: Harsh Oza | **Email**: harshoza85@gmail.com
 
-LitRover is an intelligent, multi-agent orchestration system that automates the entire research paper processing pipeline: from citation resolution to PDF extraction to AI-powered metadata extraction. Built for researchers, analysts, and data scientists across any domain.
+LitRover is an intelligent, multi-agent orchestration system that automates the entire research paper processing pipeline: from citation resolution to PDF extraction to AI-powered metadata extraction. **The standout feature is advanced PDF annotation** - every extracted data point is highlighted in color-coded PDFs with precise source traceability, making verification and collaboration effortless.
 
 ## ✨ Key Features
+
+### 🎨 Advanced PDF Annotation (★ Main Highlight)
+- **Color-coded highlights**: Every extracted value highlighted in the source PDF
+- **Source traceability**: See exactly where each data point came from
+- **Enhanced text matching**: Handles special characters, coordinates, and complex formatting
+- **Multi-record support**: Annotate multiple cores/samples in a single paper
+- **Quality verification**: Instantly spot extraction errors by reviewing highlights
+- **Collaboration-ready**: Share annotated PDFs with colleagues for review
+- **Field-specific colors**: Different data types get different highlight colors
 
 ### 🤖 Agentic Orchestration
 - **Multiple orchestration modes**: CLI automation, interactive step-by-step, LangGraph workflows, AutoGen multi-agent
@@ -22,12 +31,6 @@ LitRover is an intelligent, multi-agent orchestration system that automates the 
 - **Claude** (Anthropic): High accuracy, excellent reasoning
 - **OpenAI GPT-4**: Vision-based extraction, broad capabilities
 - **Pluggable design**: Easy to add new providers
-
-### 🎨 PDF Annotation (New!)
-- **Color-coded highlights**: See exactly where data was extracted
-- **Source traceability**: Every value linked to its source text
-- **Quality verification**: Instantly spot extraction errors
-- **Collaboration-ready**: Share annotated PDFs with colleagues
 
 ### 📊 Dynamic Schema Definition
 - Define extraction fields via interactive wizard
