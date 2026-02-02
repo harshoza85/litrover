@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![GitHub](https://img.shields.io/badge/github-harshoza%2Flitrover-blue)](https://github.com/harshoza/litrover)
+[![GitHub](https://img.shields.io/badge/github-harshoza85%2Flitrover-blue)](https://github.com/harshoza85/litrover)
 
 **Author**: Harsh Oza | **Email**: harshoza85@gmail.com
 
@@ -48,7 +48,7 @@ LitRover is an intelligent, multi-agent orchestration system that automates the 
 
 ```bash
 # Clone the repository
-git clone https://github.com/harshoza/litrover.git
+git clone https://github.com/harshoza85/litrover.git
 cd litrover
 
 # Install dependencies
@@ -236,8 +236,8 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 - **Author**: Harsh Oza
 - **Email**: harshoza85@gmail.com
-- **Issues**: [GitHub Issues](https://github.com/harshoza/litrover/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/harshoza/litrover/discussions)
+- **Issues**: [GitHub Issues](https://github.com/harshoza85/litrover/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/harshoza85/litrover/discussions)
 
 ## 🙏 Acknowledgments
 
